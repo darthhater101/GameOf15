@@ -3,28 +3,34 @@ import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 
 Window {
-    width: 600
+    width: 700
     height: width
     visible: true
     title: qsTr("Puzzle 15")
 
     Popup {
         id: victoryPopup
-        width: 200
-        height: 150
+        width: 300
+        height: 125
 
         anchors.centerIn: parent
 
         Text {
             id: winText
-            anchors.centerIn: parent
+            font.pointSize: 14
+            anchors.top: parent.top
+            anchors.topMargin: 15
+            anchors.horizontalCenter: parent.horizontalCenter
             text: "You win!"
         }
 
         Button {
             id: restartButton
             anchors.top: winText.bottom
+            anchors.topMargin: 10
             anchors.left: parent.left
+            anchors.right: parent.horizontalCenter
+            anchors.rightMargin: 5
             text: "Restart"
             onClicked: {
                 reset();
@@ -35,7 +41,10 @@ Window {
         Button {
             id: closeButton
             anchors.top: winText.bottom
-            anchors.left: restartButton.right
+            anchors.topMargin: 10
+            anchors.left: parent.horizontalCenter
+            anchors.right: parent.right
+            anchors.leftMargin: 5
             text: "Close"
             onClicked: {
                 close();
@@ -79,8 +88,8 @@ Window {
         delegate: cellDelegate
 
         move: Transition {
-            id: anim
             NumberAnimation {
+                alwaysRunToEnd: true
                 properties: "x, y"; duration: 400;
             }
         }
@@ -94,8 +103,9 @@ Window {
 
         for(var i = 0; i < numbersModel.count - 1; i++) {
             var randIndex = random(i, numbersModel.count);
-            numbersModel.move(i, randIndex, 1)
-            //swap(i, randIndex)
+            var buff = numbersModel.get(i).number;
+            numbersModel.get(i).number = numbersModel.get(randIndex).number;
+            numbersModel.get(randIndex).number = buff;
         }
         for(i = 0; i < numbersModel.count; i++) {
             if(numbersModel.get(i).number === 0) {
@@ -151,10 +161,9 @@ Window {
     }
 
     function reset() {
-        shuffle();
-        while(!isSolvable()) {
+        do {
             shuffle();
-        }
+        } while (!isSolvable())
     }
 
     Component {
@@ -190,8 +199,6 @@ Window {
     }
 
     Component.onCompleted: {
-        anim.enabled = false;
         reset();
-        anim.enabled = true;
     }
 }
