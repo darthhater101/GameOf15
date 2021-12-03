@@ -5,6 +5,8 @@ GridView {
     cellHeight: height / 4
     interactive: false
     property int zeroCellIndex: 15
+    move: animation
+    displaced: animation
 
     Transition {
         id: animation
@@ -12,7 +14,4 @@ GridView {
             properties: "x, y"; duration: 400;
         }
     }
-
-    move: animation
-    displaced: animation
 }

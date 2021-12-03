@@ -1,6 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-
+#include "numbersmodel.h"
 
 int main(int argc, char *argv[])
 {
@@ -9,6 +9,9 @@ int main(int argc, char *argv[])
 #endif
 
     QGuiApplication app(argc, argv);
+
+
+    qmlRegisterType<NumbersModel>("NumbersModelInterface", 1, 0, "NumbersModel2");
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
