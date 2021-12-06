@@ -1,7 +1,8 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
-import NumbersModelInterface 1.0
+
+import org.myplugins.qmlcomponents 1.0
 
 Window {
     width: 700
