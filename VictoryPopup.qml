@@ -10,7 +10,7 @@ Popup {
     background: Rectangle {
         color: "navy"
         border.color: "orange"
-        border.width: 1
+        border.width: 2
         radius: 10
     }
 

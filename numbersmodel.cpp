@@ -60,38 +60,31 @@ void NumbersModel::swapWithZero(int idx)
         int min = std::min(idx, zeroCellIndex);
         int max = std::max(idx, zeroCellIndex);
 
-        if(beginMoveRows(QModelIndex(), max, max, QModelIndex(), min))
+        if(beginMoveRows(QModelIndex(), min, min, QModelIndex(), max + 1))
         {
-            numbers.move(max, min);
+            numbers.move(min, max);
             endMoveRows();
         }
-        if(beginMoveRows(QModelIndex(), min + 1, min + 1, QModelIndex(), max))
+        if(beginMoveRows(QModelIndex(), max - 1, max - 1, QModelIndex(), min))
         {
-            numbers.move(min + 1, max);
+            numbers.move(max - 1, min);
             endMoveRows();
         }
 
         zeroCellIndex = idx;
-
-        emit dataChanged(createIndex(min, 0), createIndex(max, 0));
     }
 }
 
 bool NumbersModel::isSolvable()
 {
-    int zeroCellRow = 0;
-    for(int i = 0; i < numbers.size(); i++)
+    int zeroCellRow = 4;
+    int N = 0;
+    for(int i = 0; i < numbers.size() - 1; i++)
     {
         if(numbers[i] == 0)
         {
             zeroCellRow = std::floor(i / 4) + 1;
-            break;
         }
-    }
-
-    int N = 0;
-    for(int i = 0; i < numbers.size() - 1; i++)
-    {
         for(int j = i + 1; j < numbers.size(); j++)
         {
             if(numbers[i] > numbers[j] && numbers[i] && numbers[j])
@@ -106,12 +99,5 @@ bool NumbersModel::isSolvable()
 
 bool NumbersModel::isOrdered()
 {
-    for(int i = 0; i < numbers.size() - 2; i++)
-    {
-        if(numbers[i] > numbers[i + 1])
-        {
-            return false;
-        }
-    }
-    return true;
+    return std::is_sorted(numbers.begin(), numbers.end() - 1);
 }

@@ -1,7 +1,7 @@
 #pragma once
 
-#include <array>
 #include <cmath>
+#include <algorithm>
 
 #include <QDebug>
 #include <QAbstractListModel>
@@ -21,7 +21,6 @@ public:
 
     virtual int rowCount(const QModelIndex& parent) const;
     virtual QVariant data(const QModelIndex& index, int role) const;
-
 
     Q_INVOKABLE void shuffle();
     Q_INVOKABLE void swapWithZero(int index);

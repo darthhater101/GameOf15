@@ -36,7 +36,7 @@ Window {
         anchors.rightMargin: 25
         anchors.left: parent.left
         anchors.leftMargin: 25
-        model: NumbersModel2 { id: numbersModel }
+        model: NumbersModel { id: numbersModel }
         delegate: Cell {
             width: view.cellWidth
             height: view.cellHeight

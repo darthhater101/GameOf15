@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
 
-    qmlRegisterType<NumbersModel>("NumbersModelInterface", 1, 0, "NumbersModel2");
+    qmlRegisterType<NumbersModel>("NumbersModelInterface", 1, 0, "NumbersModel");
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
