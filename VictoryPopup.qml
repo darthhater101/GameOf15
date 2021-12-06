@@ -7,23 +7,33 @@ Popup {
 
     anchors.centerIn: parent
 
+    background: Rectangle {
+        color: "navy"
+        border.color: "orange"
+        border.width: 1
+        radius: 10
+    }
+
     Text {
         id: winText
-        font.pointSize: 14
+        font.pointSize: 20
         anchors.top: parent.top
         anchors.topMargin: 15
         anchors.horizontalCenter: parent.horizontalCenter
+        color: "orange"
+        font.bold: true
+        font.family: "Arial"
         text: "You win!"
     }
 
-    Button {
+    CustomButton {
         id: restartButton
         anchors.top: winText.bottom
         anchors.topMargin: 10
         anchors.left: parent.left
         anchors.right: parent.horizontalCenter
         anchors.rightMargin: 5
-        text: "Restart"
+        customText: "Restart"
         onClicked: {
             do {
               numbersModel.shuffle();
@@ -33,14 +43,14 @@ Popup {
         }
     }
 
-    Button {
+    CustomButton {
         id: closeButton
         anchors.top: winText.bottom
         anchors.topMargin: 10
         anchors.left: parent.horizontalCenter
         anchors.right: parent.right
         anchors.leftMargin: 5
-        text: "Close"
+        customText: "Close"
         onClicked: {
             close();
         }

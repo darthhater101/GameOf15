@@ -8,26 +8,34 @@ Window {
     height: width
     visible: true
     title: qsTr("Puzzle 15")
+    color: "#400080"
 
     VictoryPopup {
         id: victoryPopup
     }
 
-    Button {
+    CustomButton {
         id: shuffleButton
-        text: "Shuffle"
+        customText: "Shuffle"
         onClicked: numbersModel.shuffle()
-        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 25
         anchors.left: parent.left
+        anchors.leftMargin: 200
         anchors.right: parent.right
+        anchors.rightMargin: 200
     }
 
     Board {
         id: view
-        anchors.top: shuffleButton.bottom
-        anchors.bottom: parent.bottom
+        anchors.top: parent.top
+        anchors.topMargin: 25
+        anchors.bottom: shuffleButton.top
+        anchors.bottomMargin: 25
         anchors.right: parent.right
+        anchors.rightMargin: 25
         anchors.left: parent.left
+        anchors.leftMargin: 25
         model: NumbersModel2 { id: numbersModel }
         delegate: Cell {
             width: view.cellWidth
@@ -37,7 +45,7 @@ Window {
             onClicked: {
                 numbersModel.swapWithZero(index)
                 if(numbersModel.isOrdered()) {
-                    //victoryPopup.open()
+                    victoryPopup.open()
                 }
             }
         }

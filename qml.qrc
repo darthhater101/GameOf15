@@ -4,5 +4,6 @@
         <file>Board.qml</file>
         <file>Cell.qml</file>
         <file>VictoryPopup.qml</file>
+        <file>CustomButton.qml</file>
     </qresource>
 </RCC>

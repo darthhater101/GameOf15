@@ -8,13 +8,17 @@ Item {
         height: parent.height - 10
         radius: 10
         anchors.centerIn: parent
-        color: "red"
+        color: "navy"
+        border.color: "orange"
+        border.width: 5
 
         Text {
             anchors.centerIn: parent
             text: model.display
             font.pointSize: 30
+            color: "orange"
             font.family: "Arial"
+            font.bold: true
         }
 
         MouseArea {
