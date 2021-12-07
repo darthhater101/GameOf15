@@ -18,13 +18,13 @@ Window {
     CustomButton {
         id: shuffleButton
         customText: "Shuffle"
-        onClicked: numbersModel.shuffle()
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 25
         anchors.left: parent.left
         anchors.leftMargin: 200
         anchors.right: parent.right
         anchors.rightMargin: 200
+        onClicked: numbersModel.shuffle()
     }
 
     Board {
@@ -53,8 +53,8 @@ Window {
     }
 
     Component.onCompleted: {
-//        do {
-//            numbersModel.shuffle();
-//        } while(numbersModel.isSolvable());
+        do {
+            numbersModel.shuffle();
+        } while(!numbersModel.isSolvable());
     }
 }

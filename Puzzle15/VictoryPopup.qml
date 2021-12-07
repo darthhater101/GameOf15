@@ -7,6 +7,9 @@ Popup {
 
     anchors.centerIn: parent
 
+    onOpened: view.interactive = false
+    closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
+
     background: Rectangle {
         color: "navy"
         border.color: "orange"
@@ -17,12 +20,12 @@ Popup {
     Text {
         id: winText
         font.pointSize: 20
+        font.bold: true
+        font.family: "Arial"
         anchors.top: parent.top
         anchors.topMargin: 15
         anchors.horizontalCenter: parent.horizontalCenter
         color: "orange"
-        font.bold: true
-        font.family: "Arial"
         text: "You win!"
     }
 
@@ -55,7 +58,4 @@ Popup {
             close();
         }
     }
-
-    onOpened: view.interactive = false
-    closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
 }
