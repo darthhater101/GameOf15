@@ -51,10 +51,4 @@ Window {
             }
         }
     }
-
-    Component.onCompleted: {
-        do {
-            numbersModel.shuffle();
-        } while(!numbersModel.isSolvable());
-    }
 }

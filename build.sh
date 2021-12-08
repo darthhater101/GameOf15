@@ -34,3 +34,4 @@ $QMAKE_DIR ../Puzzle15
 make
 
 ./Puzzle15
+    
