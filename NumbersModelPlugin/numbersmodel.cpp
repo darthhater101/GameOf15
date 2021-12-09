@@ -66,17 +66,16 @@ void NumbersModel::shuffle()
 
 void NumbersModel::swapWithZero(int idx)
 {
-    int zeroCellIndex = [this](){
-        int index = 0;
-        for(int i = 0; i < numbers.size(); i++)
+    int zeroCellIndex = 0;
+
+    for(int i = 0; i < numbers.size(); i++)
+    {
+        if(numbers[i].isNull())
         {
-            if(numbers[i].isNull())
-            {
-                index = i;
-            }
+            zeroCellIndex = i;
         }
-        return index;
-    }();
+    }
+
     if((std::abs(idx - zeroCellIndex) == 1 && std::floor(idx / 4) == std::floor(zeroCellIndex / 4))
             || std::abs(idx - zeroCellIndex) == 4)
     {
@@ -120,7 +119,11 @@ bool NumbersModel::isSolvable()
 
 bool NumbersModel::isOrdered()
 {
-    return std::is_sorted(numbers.begin(), numbers.end() - 1, [](const Cell& left, const Cell& right){
-        return left.value < right.value;
-    });
+    if(!numbers[0].isNull())
+    {
+        return std::is_sorted(numbers.begin(), numbers.end() - 1, [](const Cell& left, const Cell& right){
+            return left.value < right.value;
+        });
+    }
+    return false;
 }

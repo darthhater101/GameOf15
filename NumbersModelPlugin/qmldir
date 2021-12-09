@@ -1,2 +1,2 @@
-module org.myplugins.qmlcomponents
+module NumbersModelPlugin
 plugin NumbersModelPlugin

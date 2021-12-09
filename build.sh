@@ -8,27 +8,17 @@ esac
 shift
 done
 
-PLUGIN_BUILD_DIR=build-NumbersModelPlugin 
-MAIN_BUILD_DIR=build-main
+BUILD_DIR=build
 
-if [[ ! -d "$PLUGIN_BUILD_DIR" ]]
+if [[ ! -d "$BUILD_DIR" ]]
 then
-    mkdir $PLUGIN_BUILD_DIR
+    mkdir $BUILD_DIR
 fi
 
-cd $PLUGIN_BUILD_DIR
+cd $BUILD_DIR
 
 $QMAKE_DIR ../NumbersModelPlugin
-make install
-
-cd ..
-
-if [[ ! -d "$MAIN_BUILD_DIR" ]]
-then
-    mkdir $MAIN_BUILD_DIR
-fi
-
-cd $MAIN_BUILD_DIR
+make
 
 $QMAKE_DIR ../Puzzle15
 make
