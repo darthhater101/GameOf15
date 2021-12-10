@@ -14,6 +14,9 @@ Window {
 
     VictoryPopup {
         id: victoryPopup
+        onMainClosed: root.close()
+        onRestarted: numbersModel.shuffle()
+        onOpened: view.interactive = false
     }
 
     CustomButton {

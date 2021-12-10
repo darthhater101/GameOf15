@@ -1,7 +1,7 @@
 import QtQuick 2.0
 
 Item {
-    id: item
+    id: root
     signal clicked
     Rectangle {
         width: parent.width - 10
@@ -24,7 +24,7 @@ Item {
         MouseArea {
             id: area
             anchors.fill: parent
-            onClicked: item.clicked()
+            onClicked: root.clicked()
         }
     }
 }

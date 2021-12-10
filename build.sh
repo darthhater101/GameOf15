@@ -7,6 +7,7 @@ case "$1" in
 --help) echo "Usage: ./build.sh [option]"
         echo "By default \"qmake\" in PATH variable is used"
         echo "-qmake    path to qmake file"
+        echo "          Example: ./build.sh -qmake /path/to/dir/qmake"
         echo "--help    display help and exit"
         exit 0;;
 esac

@@ -2,13 +2,15 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 Popup {
+    id: root
     width: 300
     height: 125
 
     anchors.centerIn: parent
-
-    onOpened: view.interactive = false
     closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
+
+    signal mainClosed
+    signal restarted
 
     background: Rectangle {
         color: "navy"
@@ -38,8 +40,8 @@ Popup {
         anchors.rightMargin: 5
         customText: "Restart"
         onClicked: {
-            numbersModel.shuffle();
-            victoryPopup.visible = false
+            root.restarted()
+            close()
         }
     }
 
@@ -51,8 +53,6 @@ Popup {
         anchors.right: parent.right
         anchors.leftMargin: 5
         customText: "Close"
-        onClicked: {
-            root.close();
-        }
+        onClicked: root.mainClosed()
     }
 }
