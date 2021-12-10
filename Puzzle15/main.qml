@@ -5,6 +5,7 @@ import QtQuick.Controls 2.15
 import NumbersModelPlugin 1.0
 
 Window {
+    id: root
     width: 700
     height: width
     visible: true

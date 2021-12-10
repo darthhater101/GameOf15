@@ -17,11 +17,7 @@ bool Cell::isNull() const
 NumbersModel::NumbersModel(QObject *parent) : QAbstractListModel(parent)
 {
     numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0};
-
-    do
-    {
-        shuffle();
-    } while(!isSolvable());
+    shuffle();
 }
 
 NumbersModel::~NumbersModel()
@@ -55,11 +51,14 @@ QVariant NumbersModel::data(const QModelIndex &index, int role) const
 
 void NumbersModel::shuffle()
 {
-    for(int i = 0; i < numbers.size(); i++)
+    do
     {
-        int randIndex = i + (rand() % (numbers.size() - i));
-        std::swap(numbers[i], numbers[randIndex]);
-    }
+        for(int i = 0; i < numbers.size(); i++)
+        {
+            int randIndex = i + (rand() % (numbers.size() - i));
+            std::swap(numbers[i], numbers[randIndex]);
+        }
+    } while(!isSolvable());
 
     emit dataChanged(createIndex(0, 0), createIndex(15, 0));
 }

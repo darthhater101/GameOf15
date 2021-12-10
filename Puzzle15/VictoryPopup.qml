@@ -38,10 +38,7 @@ Popup {
         anchors.rightMargin: 5
         customText: "Restart"
         onClicked: {
-            do {
-              numbersModel.shuffle();
-            } while(numbersModel.isSolvable());
-
+            numbersModel.shuffle();
             victoryPopup.visible = false
         }
     }
@@ -55,7 +52,7 @@ Popup {
         anchors.leftMargin: 5
         customText: "Close"
         onClicked: {
-            close();
+            root.close();
         }
     }
 }
